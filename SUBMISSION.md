@@ -1,24 +1,44 @@
-# Ridgeline: hackathon submission copy
+# Ridgeline: Devpost submission
 
-Everything below is ready to paste. Numbers are measurements, reproducible with
-the commands in the "Try it" section.
+Every field below maps to a box on the Devpost submission form and is ready to
+paste. Numbers are measurements, reproducible with the commands under "Try it
+out links".
 
 ---
 
-## Name
+## Project name
 
-**Ridgeline**
+```
+Ridgeline
+```
 
-## Tagline (Devpost "elevator pitch", 200 characters)
+## Elevator pitch
 
-> One frame is not a fire. Ridgeline watches public mountain cameras for smoke and holds every alert until three consecutive frames agree.
+Devpost caps this at 200 characters. This is 136.
 
-*(136 characters.)*
+```
+One frame is not a fire. Ridgeline watches public mountain cameras for smoke and holds every alert until three consecutive frames agree.
+```
 
-## One-line description
+## Try it out links
 
-Wildfire smoke detection built on public camera networks, where the alerting rule
-matters more than the model.
+```
+https://github.com/ayaan-gupta/ridgeline
+```
+
+## Built With
+
+Devpost wants these as comma separated tags.
+
+```
+python, pytorch, torchvision, fastapi, numpy, pillow, httpx, next.js, react, typescript, drizzle-orm, postgresql, leaflet, sharp, docker, docker-compose
+```
+
+## Project details
+
+Everything from "Inspiration" to "What's next" below goes in this one rich text
+box, in that order. Devpost renders markdown, so the headings and tables survive
+a straight paste.
 
 ---
 
@@ -154,12 +174,6 @@ dispatcher's decision actually depends on.
 - More clear-sky hours. 54 minutes of observed clear time is too small a
   denominator for the false alarm rate to mean much.
 
-## Built with
-
-`python` `pytorch` `torchvision` `fastapi` `numpy` `pillow` `httpx`
-`next.js` `react` `typescript` `drizzle-orm` `postgresql` `leaflet` `sharp`
-`docker` `docker-compose`
-
 ---
 
 ## Measured behaviour
@@ -186,7 +200,7 @@ cropping the frame edges also crops away the Junction Fire plume.
 ## Try it
 
 ```bash
-git clone <repo> && cd wildfire-sentry
+git clone https://github.com/ayaan-gupta/ridgeline && cd ridgeline
 docker compose up
 ```
 
@@ -239,6 +253,19 @@ claim, not over it.
 Open `/handoff`. Unanswered pinned to the top. Say the line that matters: an
 alert nobody can close is how a monitoring tool gets muted, and this is the part
 most of them leave out.
+
+## What only you can do
+
+Four things need a human, and none of them are written here because none of them
+can be.
+
+1. **Record the demo video** using the script above, and put the link in
+   Devpost's video field. Devpost wants YouTube or Vimeo.
+2. **Take the screenshots** in the shot list and upload them to the image
+   gallery. The first one becomes the thumbnail, so use the hero.
+3. **Pick the prize categories** on the submission form. Which ones exist depends
+   on the specific hackathon.
+4. **Add your team members** by their Devpost handles.
 
 ## Screenshot shot list
 
