@@ -294,7 +294,7 @@ repository downloads it at runtime and never redistributes it.
 Shipped scorer, threshold 0.60, three consecutive frames, five real recorded
 fires from the cameras that saw them.
 
-| | |
+| Measure | Result |
 |---|---|
 | Fires found, box on the verified plume | **4 of 5** |
 | Median detection latency from labelled ignition | **11 minutes** |
