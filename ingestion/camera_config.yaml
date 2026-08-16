@@ -1,0 +1,127 @@
+# Cameras this worker watches.
+#
+# Metadata is real. Coordinates, elevations and bearings come from HPWREN's own
+# camera table at hpwren.ucsd.edu/cameras/sites.js, read on 2026-08-16, and the
+# ids follow HPWREN's convention of site abbreviation plus view direction,
+# because that is what people who use these cameras already have in their heads.
+#
+# Every replay sequence below was opened frame by frame and checked to contain a
+# plume a person can actually see. Two earlier picks did not, and a sequence with
+# no visible fire cannot tell you whether a detector works.
+#
+# The replay cameras each play a real recorded fire from the Fire Ignition
+# Library. Every one of them starts at the beginning of its sequence, on clean
+# sky, so the background reference is built from frames that genuinely contain no
+# smoke. They are staggered by start_delay_seconds rather than by starting
+# part-way through, because starting mid-fire would build the background out of
+# smoke and the camera would then be comparing a plume against a plume.
+#
+# Live cameras below are off unless ENABLE_LIVE_SOURCES=true. Read
+# https://www.hpwren.ucsd.edu/cc.html first: HPWREN imagery is CC BY-NC-ND 4.0.
+
+cameras:
+  - id: hp-e
+    start_delay_seconds: 0
+    name: High Point East
+    network: hpwren
+    site: Palomar Mountain
+    lat: 33.36302
+    lng: -116.83622
+    elevation_m: 1871
+    bearing_deg: 90
+    source_type: replay
+    attribution: HPWREN, UC San Diego
+    source_config:
+      folder: junction-fire
+      poll_interval_seconds: 4
+
+  - id: cp-w
+    start_delay_seconds: 30
+    name: Cuyamaca Peak West
+    network: hpwren
+    site: Cuyamaca Rancho State Park
+    lat: 32.94642
+    lng: -116.60668
+    elevation_m: 1980
+    bearing_deg: 270
+    source_type: replay
+    attribution: HPWREN, UC San Diego
+    source_config:
+      folder: creelman-fire
+      poll_interval_seconds: 4
+
+  - id: lp-w
+    start_delay_seconds: 60
+    name: Lyons Peak West
+    network: hpwren
+    site: East of Jamul
+    lat: 32.70153
+    lng: -116.76457
+    elevation_m: 1132
+    bearing_deg: 270
+    source_type: replay
+    attribution: HPWREN, UC San Diego
+    source_config:
+      folder: beaver-fire
+      poll_interval_seconds: 4
+
+  - id: rm-n
+    start_delay_seconds: 90
+    name: Red Mountain North
+    network: hpwren
+    site: Fallbrook
+    lat: 33.40079
+    lng: -117.19047
+    elevation_m: 483
+    bearing_deg: 0
+    source_type: replay
+    attribution: HPWREN, UC San Diego
+    source_config:
+      folder: rm-n-20160604
+      poll_interval_seconds: 4
+
+  # This one the detector does not catch. It is kept because it is a real plume
+  # and a demo where every camera always alerts would teach the wrong thing.
+  - id: smer-tcs8
+    start_delay_seconds: 120
+    name: Santa Margarita TCS8
+    network: hpwren
+    site: SDSU Santa Margarita Ecological Reserve
+    lat: 33.460765
+    lng: -117.146776
+    elevation_m: 629
+    bearing_deg: 270
+    source_type: replay
+    attribution: HPWREN, UC San Diego
+    source_config:
+      folder: smer-tcs8-20190829
+      poll_interval_seconds: 4
+
+  # Live cameras. Real endpoints, confirmed 2026-08-15. Off by default.
+  - id: cp-w-live
+    name: Cuyamaca Peak West, live
+    network: hpwren
+    site: Cuyamaca Rancho State Park
+    lat: 32.94642
+    lng: -116.60668
+    elevation_m: 1980
+    bearing_deg: 270
+    source_type: live
+    attribution: HPWREN, UC San Diego. CC BY-NC-ND 4.0.
+    source_config:
+      url: https://cdn.hpwren.ucsd.edu/RTS/cp-w-mobo-c-640.jpg
+      poll_interval_seconds: 60
+
+  - id: lp-n-live
+    name: Lyons Peak North, live
+    network: hpwren
+    site: East of Jamul
+    lat: 32.70153
+    lng: -116.76457
+    elevation_m: 1132
+    bearing_deg: 0
+    source_type: live
+    attribution: HPWREN, UC San Diego. CC BY-NC-ND 4.0.
+    source_config:
+      url: https://cdn.hpwren.ucsd.edu/RTS/lp-n-mobo-c-640.jpg
+      poll_interval_seconds: 60

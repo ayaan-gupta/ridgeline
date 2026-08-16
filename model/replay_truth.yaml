@@ -1,0 +1,47 @@
+# Where the plume actually is, per replay sequence.
+#
+# Why this file exists. The first version of validate_replay.py counted a
+# sequence as detected whenever a confirmation happened after the labeled
+# ignition. That is not the same question. A detector can confirm on a cloud, a
+# lens vignette or a sun bloom at t+180s and be scored as a success, and this one
+# did: two sequences that were bundled earlier contained no visible fire at all
+# and were both being reported as detections.
+#
+# So detection is scored against location, not just timing. Each region below is
+# the area of the frame where a person who opened the frames one by one could see
+# the plume over the course of the sequence. Regions are normalised to the full
+# frame, generous enough to cover the plume as it drifts and grows, and tight
+# enough that a confirmation somewhere else in the sky is not silently counted as
+# a find.
+#
+# Checked by hand on 2026-08-16 by stepping through every sequence and drawing
+# the confirmed box back onto the frame it fired on.
+#
+# A sequence with no region has no visible plume and cannot be scored as a
+# positive at all.
+
+sequences:
+  junction-fire:
+    # Palomar High Point East. Small grey puff against sky at the left frame
+    # edge, sitting between y 0.20 and y 0.35 across the sequence. It is right
+    # beside this camera's own vignette band, which is exactly why the region has
+    # to be tight vertically: excluding the edge outright would throw away a real
+    # plume, and a loose region would accept the artefact next to it.
+    plume: [0.00, 0.16, 0.22, 0.40]
+
+  creelman-fire:
+    # Cuyamaca Peak West. Small grey puff sitting on the far ridgeline.
+    plume: [0.48, 0.36, 0.82, 0.64]
+
+  beaver-fire:
+    # Lyons Peak West. Clear grey column rising off the ridge, right of centre.
+    plume: [0.66, 0.34, 0.97, 0.68]
+
+  rm-n-20160604:
+    # Red Mountain North. Grey plume rising from the ridge at the right edge.
+    plume: [0.83, 0.26, 1.00, 0.58]
+
+  smer-tcs8-20190829:
+    # Santa Margarita TCS8. Grey plume over the ridge, centre right, clearly
+    # visible from about t+400s. The shipped heuristic does not catch it.
+    plume: [0.42, 0.24, 0.80, 0.58]

@@ -1,0 +1,365 @@
+{
+ "sequence": "junction-fire",
+ "camera": {
+  "id": "hp-e",
+  "name": "High Point East",
+  "site": "Palomar Mountain",
+  "network": "hpwren",
+  "attribution": "HPWREN, UC San Diego",
+  "lat": 33.36302,
+  "lng": -116.83622,
+  "elevation_m": 1871,
+  "bearing_deg": 90
+ },
+ "roi": [
+  0.0,
+  0.06,
+  1.0,
+  0.72
+ ],
+ "plume": [
+  0.0,
+  0.16,
+  0.22,
+  0.4
+ ],
+ "threshold": 0.6,
+ "consecutive": 3,
+ "window": 5,
+ "background_frames": 3,
+ "seconds_per_frame": 60,
+ "confirmed_index": 18,
+ "confirmed_at_seconds": 237,
+ "frames": [
+  {
+   "i": 0,
+   "file": "-00842.jpg",
+   "t": -842,
+   "score": null,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 1,
+   "file": "-00783.jpg",
+   "t": -783,
+   "score": null,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 2,
+   "file": "-00723.jpg",
+   "t": -723,
+   "score": null,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 3,
+   "file": "-00663.jpg",
+   "t": -663,
+   "score": null,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 4,
+   "file": "-00602.jpg",
+   "t": -602,
+   "score": 0.0323,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 5,
+   "file": "-00543.jpg",
+   "t": -543,
+   "score": 0.0307,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 6,
+   "file": "-00483.jpg",
+   "t": -483,
+   "score": 0.0343,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 7,
+   "file": "-00423.jpg",
+   "t": -423,
+   "score": 0.037,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 8,
+   "file": "-00362.jpg",
+   "t": -362,
+   "score": 0.0383,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 9,
+   "file": "-00303.jpg",
+   "t": -303,
+   "score": 0.0385,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 10,
+   "file": "-00242.jpg",
+   "t": -242,
+   "score": 0.0431,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 11,
+   "file": "-00183.jpg",
+   "t": -183,
+   "score": 0.058,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 12,
+   "file": "-00123.jpg",
+   "t": -123,
+   "score": 0.0557,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 13,
+   "file": "-00063.jpg",
+   "t": -63,
+   "score": 0.0516,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 14,
+   "file": "-00002.jpg",
+   "t": -2,
+   "score": 0.0514,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 15,
+   "file": "+00057.jpg",
+   "t": 57,
+   "score": 0.046,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 16,
+   "file": "+00117.jpg",
+   "t": 117,
+   "score": 0.6713,
+   "run": 1,
+   "state": "watching",
+   "bbox": {
+    "x": 0.0,
+    "y": 0.225,
+    "w": 0.0625,
+    "h": 0.055
+   }
+  },
+  {
+   "i": 17,
+   "file": "+00177.jpg",
+   "t": 177,
+   "score": 0.9922,
+   "run": 2,
+   "state": "watching",
+   "bbox": {
+    "x": 0.0,
+    "y": 0.225,
+    "w": 0.0625,
+    "h": 0.11
+   }
+  },
+  {
+   "i": 18,
+   "file": "+00237.jpg",
+   "t": 237,
+   "score": 0.9543,
+   "run": 3,
+   "state": "confirmed",
+   "bbox": {
+    "x": 0.0,
+    "y": 0.28,
+    "w": 0.0625,
+    "h": 0.055
+   }
+  },
+  {
+   "i": 19,
+   "file": "+00297.jpg",
+   "t": 297,
+   "score": 0.06,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 20,
+   "file": "+00358.jpg",
+   "t": 358,
+   "score": 0.0582,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 21,
+   "file": "+00418.jpg",
+   "t": 418,
+   "score": 0.0996,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 22,
+   "file": "+00477.jpg",
+   "t": 477,
+   "score": 0.1017,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 23,
+   "file": "+00538.jpg",
+   "t": 538,
+   "score": 0.1081,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 24,
+   "file": "+00597.jpg",
+   "t": 597,
+   "score": 0.0912,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 25,
+   "file": "+00657.jpg",
+   "t": 657,
+   "score": 0.1094,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 26,
+   "file": "+00717.jpg",
+   "t": 717,
+   "score": 0.1044,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 27,
+   "file": "+00777.jpg",
+   "t": 777,
+   "score": 0.0905,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 28,
+   "file": "+00837.jpg",
+   "t": 837,
+   "score": 0.0919,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 29,
+   "file": "+00897.jpg",
+   "t": 897,
+   "score": 0.0955,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 30,
+   "file": "+00958.jpg",
+   "t": 958,
+   "score": 0.129,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 31,
+   "file": "+01017.jpg",
+   "t": 1017,
+   "score": 0.1809,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 32,
+   "file": "+01078.jpg",
+   "t": 1078,
+   "score": 0.1858,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 33,
+   "file": "+01138.jpg",
+   "t": 1138,
+   "score": 0.2029,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 34,
+   "file": "+01198.jpg",
+   "t": 1198,
+   "score": 0.1893,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  }
+ ]
+}

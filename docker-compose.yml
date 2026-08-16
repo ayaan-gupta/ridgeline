@@ -1,0 +1,96 @@
+name: ridgeline
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-ridgeline}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ridgeline}
+      POSTGRES_DB: ${POSTGRES_DB:-ridgeline}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "${DB_PORT:-5532}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-ridgeline} -d ${POSTGRES_DB:-ridgeline}"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  model:
+    build: ./model
+    # PyTorch DataLoader workers pass tensors through shared memory, and the
+    # Docker default of 64 MB is not enough for a batch of image sequences.
+    # Training crashes with a bus error without this.
+    shm_size: 1gb
+    environment:
+      MODEL_CHECKPOINT: ${MODEL_CHECKPOINT:-/app/weights/smokenet.pt}
+      SCORER: ${SCORER:-heuristic}
+      FRAMES_DIR: /frames
+    volumes:
+      - frames:/frames
+      - ./model/weights:/app/weights
+      # Read-only so validate_replay.py can score the same sequences the worker
+      # plays, without the model service ever being able to change them.
+      - ./data/replay:/replay:ro
+      - ./ingestion/camera_config.yaml:/app/camera_config.yaml:ro
+      # Training data. Empty until you run fetch_figlib.py, and not needed to
+      # run the system.
+      - ./data/figlib:/data/figlib
+    ports:
+      - "${MODEL_PORT:-8100}:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://localhost:8000/health',timeout=4)"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+
+  web:
+    build: ./web
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER:-ridgeline}:${POSTGRES_PASSWORD:-ridgeline}@db:5432/${POSTGRES_DB:-ridgeline}
+      FRAMES_DIR: /frames
+      REPLAY_DIR: /replay
+      CONFIDENCE_THRESHOLD: ${CONFIDENCE_THRESHOLD:-0.6}
+      CONSECUTIVE_FRAMES: ${CONSECUTIVE_FRAMES:-3}
+      SLACK_WEBHOOK_URL: ${SLACK_WEBHOOK_URL:-}
+      NEXT_PUBLIC_APP_NAME: ${NEXT_PUBLIC_APP_NAME:-Ridgeline}
+    volumes:
+      - frames:/frames
+      # The landing page reel scrubs through a real replay sequence. Read only,
+      # because the site has no business writing to the imagery it cites.
+      - ./data/replay:/replay:ro
+    ports:
+      - "${WEB_PORT:-3100}:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 25s
+
+  ingestion:
+    build: ./ingestion
+    environment:
+      MODEL_SERVICE_URL: ${MODEL_SERVICE_URL:-http://model:8000}
+      WEB_BASE_URL: ${WEB_BASE_URL:-http://web:3000}
+      FRAMES_DIR: /frames
+      REPLAY_DIR: /replay
+      ENABLE_LIVE_SOURCES: ${ENABLE_LIVE_SOURCES:-false}
+      LIVE_POLL_INTERVAL_SECONDS: ${LIVE_POLL_INTERVAL_SECONDS:-60}
+    volumes:
+      - frames:/frames
+      - ./data/replay:/replay
+    depends_on:
+      model:
+        condition: service_healthy
+      web:
+        condition: service_healthy
+
+volumes:
+  pgdata:
+  frames:

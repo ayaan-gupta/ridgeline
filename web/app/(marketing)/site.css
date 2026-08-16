@@ -1,0 +1,1094 @@
+/* Ridgeline marketing surface.
+ *
+ * Everything here is scoped under .site so that not one rule can reach the
+ * console. The two surfaces deliberately share the colour tokens and the three
+ * Plex faces from design-system.md, and deliberately share nothing else. This
+ * side gets a display face at nine rem, a page with momentum, and section
+ * padding measured in screens. The console gets none of that and should not.
+ *
+ * The one rule that crosses the boundary intact: saturated colour appears only
+ * where the system is making a claim about a fire. There is no brand accent on
+ * this page either. Every button, rule and label is neutral, which is why the
+ * two moments of orange and red land as hard as they do.
+ */
+
+.site {
+  --site-gutter: clamp(20px, 5vw, 72px);
+  --site-band: clamp(96px, 14vh, 176px);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site ::selection {
+  background: var(--text-primary);
+  color: var(--surface-base);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---- type ---- */
+
+/* Micro labels. Uppercase mono at eleven pixels with open tracking is the
+   register instrument panels and technical documentation share, and it is the
+   same step as .label in the console, one face over. */
+.site .micro {
+  font-family: var(--font-data);
+  font-size: 11px;
+  line-height: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.site .micro.dim,
+.site .dim {
+  color: var(--text-muted);
+}
+
+/* The display step. The console caps its display face at thirty pixels because
+   it is read at a desk by somebody who already cares. A landing page is read
+   once, at arm's length, by somebody deciding whether to. Same face, an order
+   of magnitude more of it. Tracking tightens as size grows, because the metrics
+   that read well at fourteen pixels open up badly at a hundred and sixty. */
+.site .hero-title,
+.site .band-title,
+.site .closer-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.site .hero-title {
+  font-size: clamp(3.1rem, 11.2vw, 10.5rem);
+  line-height: 0.86;
+  letter-spacing: -0.035em;
+}
+
+.site .band-title,
+.site .closer-title {
+  font-size: clamp(2.1rem, 5.6vw, 4.4rem);
+  line-height: 0.94;
+  letter-spacing: -0.025em;
+}
+
+/* ---- line by line mask reveal ---- */
+
+/* The mask needs more room than the line box. A display face set at 0.86
+   line-height overflows its own box by design, and clipping to the box shears
+   the caps off. Pad the mask out and take the space back with a matching
+   negative margin, so the reveal is hidden without the type being cropped. */
+.site .reveal .reveal-line {
+  display: block;
+  overflow: hidden;
+  padding-block: 0.16em;
+  margin-block: -0.16em;
+}
+
+.site .reveal .reveal-line > span {
+  display: block;
+  transform: translate3d(0, 108%, 0);
+  transition: transform 900ms var(--ease-out);
+}
+
+.site .reveal[data-seen] .reveal-line > span {
+  transform: translate3d(0, 0, 0);
+}
+
+/* ---- nav ---- */
+
+.sitenav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: 14px var(--site-gutter);
+  border-bottom: 1px solid transparent;
+  transition:
+    background 260ms ease,
+    border-color 260ms ease;
+}
+
+.sitenav[data-lifted] {
+  background: var(--surface-base);
+  border-bottom-color: var(--line);
+}
+
+.sitenav-links {
+  display: flex;
+  gap: var(--space-6);
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.sitenav-links a {
+  position: relative;
+  padding-bottom: 2px;
+}
+
+/* The underline grows from the left rather than fading in. A rule that draws
+   itself reads as a measurement being taken, which is the only decorative
+   gesture this page repeats. */
+.sitenav-links a::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 1px;
+  background: var(--text-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 320ms var(--ease-out);
+}
+
+.sitenav-links a:hover {
+  color: var(--text-primary);
+}
+
+.sitenav-links a:hover::after {
+  transform: scaleX(1);
+}
+
+.sitenav-cta {
+  font-size: 13px;
+  padding: 7px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  color: var(--text-primary);
+  transition:
+    background 200ms ease,
+    color 200ms ease;
+}
+
+.sitenav-cta:hover {
+  background: var(--text-primary);
+  color: var(--surface-base);
+}
+
+/* ---- buttons ---- */
+
+/* Filled means neutral, not coloured. A saturated call to action would be the
+   fifth status colour this system spent a whole document refusing to add. */
+.site .btn {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--text-primary);
+  background: var(--text-primary);
+  color: var(--surface-base);
+  font-size: 14px;
+  font-weight: 500;
+  transition:
+    background 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease;
+}
+
+.site .btn:hover {
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.site .btn.ghost {
+  background: transparent;
+  border-color: var(--line-strong);
+  color: var(--text-primary);
+}
+
+.site .btn.ghost:hover {
+  border-color: var(--text-primary);
+}
+
+/* ---- hero ---- */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 var(--site-gutter) clamp(32px, 6vh, 64px);
+  overflow: hidden;
+}
+
+.hero-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Anchored to the bottom and scaled up eight percent, which reliably crops the
+     burned-in HPWREN header off the top at any viewport shape. Cropping for
+     layout is not retouching: no filter, no duotone, no overlay tint. The
+     argument this whole product makes is that the chrome must not lie about what
+     the sky looked like, and the first photograph a visitor sees is the worst
+     possible place to break that. The same header is left fully intact on the
+     reel, where the frames are the evidence rather than the backdrop. */
+  object-position: 50% 100%;
+  transform: scale(1.08);
+  transform-origin: 50% 100%;
+}
+
+/* A scrim, not a gradient treatment. It adds no hue: it is the page's own
+   background fading up so the headline holds contrast over a bright sky. PRD
+   17.3 rules out decorative gradient washes, and this is doing legibility work
+   that a solid panel over a landscape would do worse. */
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    var(--surface-base) 0%,
+    rgba(14, 16, 19, 0.72) 34%,
+    rgba(14, 16, 19, 0.12) 66%,
+    rgba(14, 16, 19, 0.34) 100%
+  );
+}
+
+.hero-body {
+  position: relative;
+  max-width: 62rem;
+}
+
+.hero-sub {
+  max-width: 46ch;
+  margin: var(--space-8) 0 0;
+  font-size: clamp(15px, 1.35vw, 18px);
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
+
+/* Telemetry sits over a bright sky, so it gets the same opaque panel the reel
+   HUD uses. Muted text floating on a photograph is the sort of thing that looks
+   composed in a mockup and is unreadable at noon. */
+.hero-meta {
+  position: absolute;
+  top: 92px;
+  right: var(--site-gutter);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  text-align: right;
+  padding: 10px 12px;
+  background: var(--surface-base);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.hero-cue {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-12);
+  color: var(--text-secondary);
+}
+
+.hero-cue-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--line-strong);
+  position: relative;
+  overflow: hidden;
+}
+
+/* A pulse travelling left to right along the rule. It is the only ambient
+   motion on the page, it points the way the page moves, and it stops the moment
+   reduced motion is requested. */
+.hero-cue-rule::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 22%;
+  background: var(--text-secondary);
+  animation: cue-sweep 3.2s ease-in-out infinite;
+}
+
+@keyframes cue-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(560%);
+  }
+}
+
+/* ---- bands ---- */
+
+.band {
+  padding: var(--site-band) var(--site-gutter);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.band-head {
+  max-width: 70rem;
+}
+
+.band-head .micro {
+  display: block;
+  margin-bottom: var(--space-6);
+}
+
+.band-lede {
+  max-width: 58ch;
+  margin: var(--space-8) 0 0;
+  font-size: clamp(15px, 1.3vw, 17px);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.band-foot {
+  max-width: 62ch;
+  margin: var(--space-12) 0 0;
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+/* ---- the scrub reel ---- */
+
+.reel {
+  position: relative;
+}
+
+.reel-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--surface-base);
+}
+
+.reel-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.reel-box {
+  position: absolute;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.reel-box-rect {
+  fill: none;
+  stroke: var(--state-watching);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 392;
+  stroke-dashoffset: 392;
+  animation: box-draw 520ms var(--ease-out) forwards;
+}
+
+.reel-box-rect[data-state="confirmed"] {
+  stroke: var(--state-confirmed);
+}
+
+@keyframes box-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* HUD panels are opaque rather than blurred. A frosted panel over a photograph
+   redistributes the colours underneath it, and this product's core claim is
+   that it does not do that. Covering part of the frame is honest. Tinting it
+   is not. */
+.reel-hud {
+  position: absolute;
+  inset: 0;
+  /* The top pad clears the fixed navigation. The bar stays put over the reel
+     rather than hiding on scroll, so the telemetry has to sit below it. */
+  padding: clamp(76px, 9vh, 96px) clamp(16px, 3vw, 32px) clamp(16px, 3vw, 32px);
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+.reel-hud-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: baseline;
+  padding: 8px 12px;
+  align-self: flex-start;
+  background: var(--surface-base);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.reel-readout {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: clamp(16px, 3vw, 40px);
+  padding: 14px 16px;
+  align-self: flex-start;
+  background: var(--surface-base);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.reel-readout > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.reel-clock-value,
+.reel-score-value,
+.reel-run-value {
+  font-family: var(--font-data);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.reel-clock-value {
+  font-size: clamp(20px, 2.4vw, 30px);
+}
+
+/* The confidence value is the biggest number on the reel because it is the one
+   the visitor is being asked to watch. */
+.reel-score-value {
+  font-size: clamp(30px, 4.6vw, 62px);
+  letter-spacing: -0.02em;
+}
+
+.reel-run-value {
+  font-size: clamp(20px, 2.4vw, 30px);
+}
+
+.reel-state {
+  font-family: var(--font-data);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-strong);
+  color: var(--text-secondary);
+  transition:
+    background 240ms ease,
+    color 240ms ease,
+    border-color 240ms ease;
+}
+
+.reel-state.s-watching {
+  background: var(--state-watching);
+  border-color: var(--state-watching);
+  color: var(--ink-on-watching);
+}
+
+.reel-state.s-confirmed {
+  background: var(--state-confirmed);
+  border-color: var(--state-confirmed);
+  color: var(--ink-on-confirmed);
+}
+
+/* The frame strip from design-system.md section 7, at reel scale. Square bars,
+   because they are measurement marks and rounding a measurement mark makes it
+   look like a decoration. */
+.reel-strip {
+  position: relative;
+  margin-top: var(--space-6);
+  height: clamp(56px, 9vh, 96px);
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  padding: 0 12px 0;
+  background: var(--surface-base);
+  border: 1px solid var(--line);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.reel-strip-threshold {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1px dashed var(--line-strong);
+  pointer-events: none;
+}
+
+.reel-strip-threshold .micro {
+  position: absolute;
+  right: 8px;
+  top: -18px;
+  font-size: 10px;
+}
+
+.reel-bar {
+  flex: 1;
+  min-width: 2px;
+  background: var(--line);
+  transition: height 180ms ease-out;
+}
+
+.reel-bar[data-past] {
+  background: var(--line-strong);
+}
+
+.reel-bar[data-over="watching"] {
+  background: var(--state-watching);
+}
+
+.reel-bar[data-over="confirmed"] {
+  background: var(--state-confirmed);
+}
+
+.reel-loading {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: clamp(16px, 3vw, 32px);
+  background: var(--surface-base);
+  border-top: 1px solid var(--line);
+}
+
+.reel-loading-bar {
+  height: 2px;
+  background: var(--text-primary);
+  transform-origin: left;
+  transition: transform 200ms linear;
+}
+
+/* The caption lives inside the sticky stage rather than beside it, and it is
+   the one element allowed to sit on a panel spanning the full width, because it
+   is the reel narrating itself. */
+.reel-caption {
+  margin: 0;
+  padding: 14px 16px;
+  background: var(--surface-base);
+  border: 1px solid var(--line);
+  border-top: 0;
+  border-radius: 0 0 var(--radius) var(--radius);
+  font-size: clamp(13px, 1.15vw, 15px);
+  line-height: 1.5;
+  color: var(--text-secondary);
+  transition: color 240ms ease, border-color 240ms ease;
+}
+
+.reel-caption[data-state="watching"] {
+  color: var(--text-primary);
+}
+
+.reel-caption[data-state="confirmed"] {
+  color: var(--text-primary);
+  border-color: var(--state-confirmed);
+}
+
+/* ---- the rule dial ---- */
+
+.dial {
+  margin-top: var(--space-12);
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(280px, 1.1fr);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: start;
+}
+
+.dial-control {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-6);
+  background: var(--surface-raised);
+}
+
+.dial-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  margin-top: var(--space-4);
+}
+
+/* Track, thumb and colours come from the base rule in globals.css. */
+.dial-row input[type="range"] {
+  flex: 1;
+}
+
+.dial-n {
+  font-family: var(--font-display);
+  font-size: 56px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  min-width: 44px;
+  text-align: right;
+}
+
+.dial-ticks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-2);
+}
+
+.dial-tick {
+  background: none;
+  border: 0;
+  padding: 4px 6px;
+  cursor: pointer;
+  font-family: var(--font-data);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.dial-tick[data-on] {
+  color: var(--text-primary);
+}
+
+/* The shipped value is marked in the control itself, so the visitor can see
+   what the product actually chose without reading the caption. */
+.dial-tick[data-shipped]::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-top: 3px;
+  background: var(--text-secondary);
+}
+
+.site .dial-note {
+  margin: var(--space-4) 0 0;
+  min-height: 3.4em;
+  font-family: var(--font-ui);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.dial-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.dial-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-muted);
+  transition: color 200ms ease;
+}
+
+.dial-item[data-found] {
+  color: var(--text-primary);
+}
+
+/* Found and missed differ in shape as well as in colour, following the
+   three-channel rule the console uses for risk state. */
+.dial-item-mark {
+  width: 10px;
+  height: 10px;
+  border: 1px solid currentColor;
+  flex: none;
+}
+
+.dial-item[data-found] .dial-item-mark {
+  background: currentColor;
+}
+
+.dial-item-name {
+  flex: 1;
+  font-size: 14px;
+}
+
+.dial-item-value {
+  font-variant-numeric: tabular-nums;
+}
+
+.dial-stats {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-6);
+  margin: var(--space-6) 0 0;
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--line);
+}
+
+.dial-stats dt {
+  margin-bottom: var(--space-2);
+}
+
+.dial-stats dd {
+  margin: 0;
+}
+
+.dial-stat {
+  font-family: var(--font-data);
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(28px, 3.4vw, 44px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.dial-stat-of {
+  font-size: 15px;
+  color: var(--text-muted);
+  letter-spacing: 0;
+}
+
+/* ---- numbers ---- */
+
+.numbers {
+  padding: var(--site-band) var(--site-gutter);
+  max-width: 1440px;
+  margin: 0 auto;
+  border-top: 1px solid var(--line);
+}
+
+.numbers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.stat {
+  background: var(--surface-base);
+  padding: var(--space-8) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.stat-value {
+  font-family: var(--font-data);
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(38px, 4.4vw, 60px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.stat-of {
+  font-size: 16px;
+  color: var(--text-muted);
+  letter-spacing: 0;
+}
+
+.stat-note {
+  margin: var(--space-2) 0 0;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+/* A shell command set in uppercase is not a style choice, it is a typo. */
+.site .numbers-foot {
+  margin: var(--space-6) 0 0;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 12px;
+}
+
+/* ---- pipeline ---- */
+
+.pipe {
+  position: relative;
+}
+
+.pipe-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-6);
+  padding: 0 var(--site-gutter);
+  overflow: hidden;
+}
+
+.pipe-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-6);
+}
+
+.pipe-count {
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.pipe-rail {
+  height: 1px;
+  background: var(--line);
+}
+
+.pipe-rail-fill {
+  display: block;
+  height: 100%;
+  background: var(--text-primary);
+  transform-origin: left;
+}
+
+.pipe-track {
+  display: flex;
+  gap: clamp(24px, 4vw, 64px);
+  width: max-content;
+  will-change: transform;
+  transition: transform 120ms linear;
+}
+
+.pipe-card {
+  flex: 0 0 min(46rem, 78vw);
+  opacity: 0.22;
+  transition: opacity 380ms ease;
+}
+
+.pipe-card[data-on] {
+  opacity: 1;
+}
+
+.pipe-card-label {
+  display: block;
+  margin-bottom: var(--space-4);
+}
+
+.pipe-card-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 4.4vw, 3.4rem);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  margin: 0 0 var(--space-6);
+}
+
+.pipe-card-body {
+  margin: 0;
+  max-width: 46ch;
+  font-size: clamp(14px, 1.25vw, 16px);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ---- limits ---- */
+
+.limits-list {
+  list-style: none;
+  margin: var(--space-12) 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.limits-list li {
+  display: grid;
+  grid-template-columns: minmax(200px, 22rem) minmax(0, 1fr);
+  gap: var(--space-6) clamp(24px, 5vw, 72px);
+  padding: var(--space-8) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.limits-list h3 {
+  margin: 0;
+  font-size: clamp(17px, 1.7vw, 22px);
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.limits-list p {
+  margin: 0;
+  font-size: clamp(14px, 1.2vw, 15.5px);
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+/* ---- closer ---- */
+
+.closer {
+  padding: var(--site-band) var(--site-gutter);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.closer-body {
+  max-width: 60ch;
+  margin: var(--space-8) 0 0;
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.closer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
+
+/* ---- footer ---- */
+
+.sitefoot {
+  border-top: 1px solid var(--line);
+  padding: var(--space-12) var(--site-gutter) var(--space-8);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.sitefoot-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-6);
+  padding-bottom: var(--space-8);
+}
+
+.sitefoot-line {
+  margin: 0;
+  max-width: 52ch;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.sitefoot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-8);
+  padding: var(--space-8) 0;
+  border-top: 1px solid var(--line);
+}
+
+.sitefoot-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.sitefoot-grid a:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.sitefoot-muted {
+  color: var(--text-muted);
+}
+
+.sitefoot-base {
+  display: flex;
+  justify-content: space-between;
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--line);
+  color: var(--text-muted);
+}
+
+/* ---- narrow ---- */
+
+/* On a phone the reel stops filling the viewport and is letterboxed to the
+   frame's own aspect instead.
+   Cropping a three by two landscape frame into a portrait viewport throws away
+   the sides, and on the Beaver Fire sequence the plume sits at eighty four
+   percent of the width, so cover-fit hid the one thing the reel exists to show.
+   Sizing the canvas to the source aspect means cover-fit crops nothing. */
+@media (max-width: 760px) {
+  .reel-canvas {
+    /* Sits lower than the nav clearance strictly requires, so the frame reads
+       as optically centred in the space above the readout rather than stranded
+       under the bar. */
+    inset: clamp(96px, 17vh, 170px) 0 auto 0;
+    height: auto;
+    aspect-ratio: 1024 / 683;
+  }
+
+  /* The camera is already named in the copy directly above the reel, so the
+     telemetry panel is the thing that gives way rather than the photograph. */
+  .reel-hud-top {
+    display: none;
+  }
+
+  .reel-hud {
+    padding-top: clamp(84px, 12vh, 120px);
+  }
+
+  .reel-readout {
+    align-self: stretch;
+  }
+}
+
+@media (max-width: 860px) {
+  .sitenav-links {
+    display: none;
+  }
+
+  .hero-meta {
+    display: none;
+  }
+
+  .dial {
+    grid-template-columns: 1fr;
+  }
+
+  .limits-list li {
+    grid-template-columns: 1fr;
+  }
+
+  .reel-readout {
+    gap: var(--space-4);
+  }
+}
+
+/* ---- reduced motion ---- */
+
+/* Every effect above collapses to its end state. The reel still works, because
+   scrubbing is a direct response to input rather than an animation, and taking
+   it away would remove the content instead of the motion. */
+@media (prefers-reduced-motion: reduce) {
+  .site *,
+  .site *::before,
+  .site *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .site .reveal .reveal-line > span {
+    transform: none;
+  }
+
+  .hero-cue-rule::after {
+    display: none;
+  }
+
+  .reel-box-rect {
+    stroke-dashoffset: 0;
+  }
+}

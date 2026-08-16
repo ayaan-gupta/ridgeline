@@ -1,0 +1,384 @@
+{
+ "sequence": "rm-n-20160604",
+ "camera": {
+  "id": "rm-n",
+  "name": "Red Mountain North",
+  "site": "Fallbrook",
+  "network": "hpwren",
+  "attribution": "HPWREN, UC San Diego",
+  "lat": 33.40079,
+  "lng": -117.19047,
+  "elevation_m": 483,
+  "bearing_deg": 0
+ },
+ "roi": [
+  0.0,
+  0.06,
+  1.0,
+  0.72
+ ],
+ "plume": [
+  0.83,
+  0.26,
+  1.0,
+  0.58
+ ],
+ "threshold": 0.6,
+ "consecutive": 3,
+ "window": 5,
+ "background_frames": 3,
+ "seconds_per_frame": 60,
+ "confirmed_index": 22,
+ "confirmed_at_seconds": 420,
+ "frames": [
+  {
+   "i": 0,
+   "file": "-00900.jpg",
+   "t": -900,
+   "score": null,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 1,
+   "file": "-00840.jpg",
+   "t": -840,
+   "score": null,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 2,
+   "file": "-00780.jpg",
+   "t": -780,
+   "score": null,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 3,
+   "file": "-00720.jpg",
+   "t": -720,
+   "score": null,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 4,
+   "file": "-00660.jpg",
+   "t": -660,
+   "score": 0.0276,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 5,
+   "file": "-00600.jpg",
+   "t": -600,
+   "score": 0.0298,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 6,
+   "file": "-00540.jpg",
+   "t": -540,
+   "score": 0.0272,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 7,
+   "file": "-00480.jpg",
+   "t": -480,
+   "score": 0.0286,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 8,
+   "file": "-00420.jpg",
+   "t": -420,
+   "score": 0.0277,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 9,
+   "file": "-00360.jpg",
+   "t": -360,
+   "score": 0.029,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 10,
+   "file": "-00300.jpg",
+   "t": -300,
+   "score": 0.0289,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 11,
+   "file": "-00240.jpg",
+   "t": -240,
+   "score": 0.0296,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 12,
+   "file": "-00180.jpg",
+   "t": -180,
+   "score": 0.0299,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 13,
+   "file": "-00120.jpg",
+   "t": -120,
+   "score": 0.0326,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 14,
+   "file": "-00060.jpg",
+   "t": -60,
+   "score": 0.0305,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 15,
+   "file": "+00000.jpg",
+   "t": 0,
+   "score": 0.031,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 16,
+   "file": "+00060.jpg",
+   "t": 60,
+   "score": 0.0314,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 17,
+   "file": "+00120.jpg",
+   "t": 120,
+   "score": 0.0317,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 18,
+   "file": "+00180.jpg",
+   "t": 180,
+   "score": 0.0318,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 19,
+   "file": "+00240.jpg",
+   "t": 240,
+   "score": 0.1717,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 20,
+   "file": "+00300.jpg",
+   "t": 300,
+   "score": 0.9062,
+   "run": 1,
+   "state": "watching",
+   "bbox": {
+    "x": 0.9375,
+    "y": 0.445,
+    "w": 0.0625,
+    "h": 0.055
+   }
+  },
+  {
+   "i": 21,
+   "file": "+00360.jpg",
+   "t": 360,
+   "score": 0.9347,
+   "run": 2,
+   "state": "watching",
+   "bbox": {
+    "x": 0.9375,
+    "y": 0.39,
+    "w": 0.0625,
+    "h": 0.11
+   }
+  },
+  {
+   "i": 22,
+   "file": "+00420.jpg",
+   "t": 420,
+   "score": 0.9914,
+   "run": 3,
+   "state": "confirmed",
+   "bbox": {
+    "x": 0.9375,
+    "y": 0.39,
+    "w": 0.0625,
+    "h": 0.11
+   }
+  },
+  {
+   "i": 23,
+   "file": "+00480.jpg",
+   "t": 480,
+   "score": 0.9964,
+   "run": 4,
+   "state": "confirmed",
+   "bbox": {
+    "x": 0.9375,
+    "y": 0.39,
+    "w": 0.0625,
+    "h": 0.11
+   }
+  },
+  {
+   "i": 24,
+   "file": "+00540.jpg",
+   "t": 540,
+   "score": 0.9998,
+   "run": 5,
+   "state": "confirmed",
+   "bbox": {
+    "x": 0.9375,
+    "y": 0.445,
+    "w": 0.0625,
+    "h": 0.055
+   }
+  },
+  {
+   "i": 25,
+   "file": "+00600.jpg",
+   "t": 600,
+   "score": 0.0715,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 26,
+   "file": "+00660.jpg",
+   "t": 660,
+   "score": 0.0305,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 27,
+   "file": "+00720.jpg",
+   "t": 720,
+   "score": 0.0372,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 28,
+   "file": "+00780.jpg",
+   "t": 780,
+   "score": 0.0347,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 29,
+   "file": "+00840.jpg",
+   "t": 840,
+   "score": 0.0352,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 30,
+   "file": "+00900.jpg",
+   "t": 900,
+   "score": 0.0407,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 31,
+   "file": "+00960.jpg",
+   "t": 960,
+   "score": 0.0374,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 32,
+   "file": "+01020.jpg",
+   "t": 1020,
+   "score": 0.0352,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 33,
+   "file": "+01080.jpg",
+   "t": 1080,
+   "score": 0.0376,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 34,
+   "file": "+01140.jpg",
+   "t": 1140,
+   "score": 0.0419,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 35,
+   "file": "+01200.jpg",
+   "t": 1200,
+   "score": 0.0444,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  }
+ ]
+}

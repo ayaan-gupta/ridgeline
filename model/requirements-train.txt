@@ -1,0 +1,5 @@
+# Training only. Installed on top of requirements.txt by the model image so the
+# service can load a checkpoint, and used directly by train.py.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.5.1
+torchvision==0.20.1

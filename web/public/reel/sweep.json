@@ -1,0 +1,186 @@
+{
+ "threshold": 0.6,
+ "window": 5,
+ "results": [
+  {
+   "n": 1,
+   "found": 4,
+   "missed": 1,
+   "sequences": 5,
+   "false_alarms": 0,
+   "false_alarms_per_camera_per_day": 0.0,
+   "median_latency_seconds": 540,
+   "per_sequence": [
+    {
+     "sequence": "beaver-fire",
+     "found": true,
+     "at_seconds": 779
+    },
+    {
+     "sequence": "creelman-fire",
+     "found": true,
+     "at_seconds": 1020
+    },
+    {
+     "sequence": "junction-fire",
+     "found": true,
+     "at_seconds": 117
+    },
+    {
+     "sequence": "rm-n-20160604",
+     "found": true,
+     "at_seconds": 300
+    },
+    {
+     "sequence": "smer-tcs8-20190829",
+     "found": false,
+     "at_seconds": null
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "found": 4,
+   "missed": 1,
+   "sequences": 5,
+   "false_alarms": 0,
+   "false_alarms_per_camera_per_day": 0.0,
+   "median_latency_seconds": 600,
+   "per_sequence": [
+    {
+     "sequence": "beaver-fire",
+     "found": true,
+     "at_seconds": 840
+    },
+    {
+     "sequence": "creelman-fire",
+     "found": true,
+     "at_seconds": 1080
+    },
+    {
+     "sequence": "junction-fire",
+     "found": true,
+     "at_seconds": 177
+    },
+    {
+     "sequence": "rm-n-20160604",
+     "found": true,
+     "at_seconds": 360
+    },
+    {
+     "sequence": "smer-tcs8-20190829",
+     "found": false,
+     "at_seconds": null
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "found": 4,
+   "missed": 1,
+   "sequences": 5,
+   "false_alarms": 0,
+   "false_alarms_per_camera_per_day": 0.0,
+   "median_latency_seconds": 660,
+   "per_sequence": [
+    {
+     "sequence": "beaver-fire",
+     "found": true,
+     "at_seconds": 899
+    },
+    {
+     "sequence": "creelman-fire",
+     "found": true,
+     "at_seconds": 1140
+    },
+    {
+     "sequence": "junction-fire",
+     "found": true,
+     "at_seconds": 237
+    },
+    {
+     "sequence": "rm-n-20160604",
+     "found": true,
+     "at_seconds": 420
+    },
+    {
+     "sequence": "smer-tcs8-20190829",
+     "found": false,
+     "at_seconds": null
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "found": 2,
+   "missed": 3,
+   "sequences": 5,
+   "false_alarms": 0,
+   "false_alarms_per_camera_per_day": 0.0,
+   "median_latency_seconds": 720,
+   "per_sequence": [
+    {
+     "sequence": "beaver-fire",
+     "found": true,
+     "at_seconds": 960
+    },
+    {
+     "sequence": "creelman-fire",
+     "found": false,
+     "at_seconds": null
+    },
+    {
+     "sequence": "junction-fire",
+     "found": false,
+     "at_seconds": null
+    },
+    {
+     "sequence": "rm-n-20160604",
+     "found": true,
+     "at_seconds": 480
+    },
+    {
+     "sequence": "smer-tcs8-20190829",
+     "found": false,
+     "at_seconds": null
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "found": 2,
+   "missed": 3,
+   "sequences": 5,
+   "false_alarms": 0,
+   "false_alarms_per_camera_per_day": 0.0,
+   "median_latency_seconds": 780,
+   "per_sequence": [
+    {
+     "sequence": "beaver-fire",
+     "found": true,
+     "at_seconds": 1019
+    },
+    {
+     "sequence": "creelman-fire",
+     "found": false,
+     "at_seconds": null
+    },
+    {
+     "sequence": "junction-fire",
+     "found": false,
+     "at_seconds": null
+    },
+    {
+     "sequence": "rm-n-20160604",
+     "found": true,
+     "at_seconds": 540
+    },
+    {
+     "sequence": "smer-tcs8-20190829",
+     "found": false,
+     "at_seconds": null
+    }
+   ]
+  }
+ ]
+}

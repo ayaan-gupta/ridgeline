@@ -1,0 +1,1482 @@
+/* Ridgeline. Every value here comes from design-system.md. */
+
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-sans-condensed/600.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+:root {
+  /* Chrome. Hue-neutral to slightly cool so photographed sky reads truthfully. */
+  --surface-base: #0e1013;
+  --surface-raised: #16191e;
+  --surface-inset: #1c2027;
+  --line: #262b33;
+  --line-strong: #363d47;
+
+  /* Text. Never pure white. */
+  --text-primary: #e4e7eb;
+  --text-secondary: #9ba3ae;
+  --text-muted: #646c78;
+
+  /* Risk state. The only saturated color in the product. */
+  --state-clear: #2a2f37;
+  --state-watching: #d98a1f;
+  --state-confirmed: #f2555a;
+  --state-offline: #5a6472;
+  /* Ink for text sitting on a saturated state fill. Each is its own hue's near
+     black rather than pure black, so the label reads as part of the chip. */
+  --ink-on-watching: #10130f;
+  --ink-on-confirmed: #14090a;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+
+  --radius-sm: 2px;
+  --radius: 3px;
+  --radius-lg: 4px;
+
+  --font-display: "IBM Plex Sans Condensed", "IBM Plex Sans", system-ui, sans-serif;
+  --font-ui: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --header-height: 52px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--surface-base);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 14px;
+  line-height: 20px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+/* Focus is visible everywhere and never removed. An operator working a keyboard
+   during an incident has to be able to see where they are. */
+:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---- type ---- */
+
+.display-lg {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 34px;
+  letter-spacing: -0.02em;
+}
+
+.display-md {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 26px;
+  letter-spacing: -0.01em;
+}
+
+.label {
+  font-size: 11px;
+  line-height: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.data {
+  font-family: var(--font-data);
+  font-size: 12px;
+  line-height: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.data-sm {
+  font-family: var(--font-data);
+  font-size: 11px;
+  line-height: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.secondary {
+  color: var(--text-secondary);
+}
+
+/* ---- app frame ---- */
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  height: var(--header-height);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: 0 var(--space-6);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--surface-base);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* The mark is the ridgeline the cameras sit on and the plume breaking it. */
+.wordmark svg {
+  display: block;
+}
+
+.nav {
+  display: flex;
+  gap: var(--space-1);
+  margin-left: var(--space-2);
+}
+
+.nav a {
+  padding: 6px var(--space-3);
+  border-radius: var(--radius);
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.nav a:hover {
+  color: var(--text-primary);
+  background: var(--surface-raised);
+}
+
+.nav a[aria-current="page"] {
+  color: var(--text-primary);
+  background: var(--surface-inset);
+}
+
+.topbar-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.page {
+  padding: var(--space-6);
+  flex: 1;
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+.page-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+
+/* ---- connection dot ---- */
+
+.conn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+}
+
+.conn-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-muted);
+}
+
+/* Liveness is shown with lightness and a slow pulse, never with a hue.
+   A saturated green dot here would be the one decorative colour on screen, and
+   the whole premise is that colour means the system is claiming something about
+   a fire. Green-means-healthy would also be borrowing the exact convention this
+   product has no use for: a clear camera is not a success state, it is the
+   normal state. */
+.conn.live .conn-dot {
+  background: var(--text-secondary);
+  animation: conn-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes conn-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* ---- buttons ---- */
+
+.btn {
+  background: var(--surface-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 6px var(--space-3);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--surface-inset);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* ---- camera grid ---- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-2);
+}
+
+.tile {
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: block;
+  position: relative;
+}
+
+.tile:hover {
+  border-color: var(--line-strong);
+}
+
+.tile[data-state="watching"] {
+  border-left: 2px solid var(--state-watching);
+}
+
+.tile[data-state="confirmed"] {
+  border: 3px solid var(--state-confirmed);
+}
+
+.tile[data-state="offline"] {
+  border-left: 2px solid var(--state-offline);
+}
+
+.tile-image {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  background: var(--surface-inset);
+  overflow: hidden;
+}
+
+.tile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Offline reads without color: a hatch nobody mistakes for a live picture. */
+.tile-image.is-offline::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent 0 6px,
+    rgba(90, 100, 114, 0.28) 6px 12px
+  );
+}
+
+.tile-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 12px;
+  text-align: center;
+  padding: var(--space-4);
+}
+
+.bbox {
+  position: absolute;
+  border: 2px solid var(--state-confirmed);
+  border-radius: 0;
+  pointer-events: none;
+}
+
+.bbox[data-state="watching"] {
+  border-color: var(--state-watching);
+}
+
+.tile-body {
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.tile-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.tile-name {
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 500;
+}
+
+.tile-meta {
+  display: flex;
+  gap: var(--space-3);
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+
+/* ---- state chip ---- */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: var(--radius-sm);
+  padding: 2px 6px;
+  font-size: 11px;
+  line-height: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.chip[data-state="clear"] {
+  color: var(--text-muted);
+  border-color: var(--line-strong);
+}
+
+.chip[data-state="watching"] {
+  color: var(--ink-on-watching);
+  background: var(--state-watching);
+}
+
+.chip[data-state="confirmed"] {
+  color: var(--ink-on-confirmed);
+  background: var(--state-confirmed);
+}
+
+.chip[data-state="offline"] {
+  color: var(--text-secondary);
+  border-color: var(--state-offline);
+}
+
+/* ---- frame strip: the signature element ---- */
+
+.strip {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 28px;
+  background: var(--surface-inset);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+}
+
+.strip-threshold {
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  height: 1px;
+  background: var(--line-strong);
+  pointer-events: none;
+}
+
+.strip-bar {
+  flex: 1;
+  min-width: 2px;
+  background: var(--line-strong);
+  border-radius: 0;
+  align-self: flex-end;
+}
+
+.strip-bar[data-above="true"][data-state="watching"] {
+  background: var(--state-watching);
+}
+
+.strip-bar[data-above="true"][data-state="confirmed"] {
+  background: var(--state-confirmed);
+}
+
+.strip-bar.is-new {
+  animation: bar-in 180ms ease-out;
+}
+
+@keyframes bar-in {
+  from {
+    opacity: 0;
+    transform: scaleY(0.4);
+    transform-origin: bottom;
+  }
+}
+
+.strip-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.strip-row .strip {
+  flex: 1;
+}
+
+/* ---- alert banner: the one element allowed to float ---- */
+
+.banner {
+  position: sticky;
+  top: var(--header-height);
+  z-index: 15;
+  background: var(--surface-raised);
+  border: 1px solid var(--state-confirmed);
+  border-left: 3px solid var(--state-confirmed);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  animation: banner-in 260ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+@keyframes banner-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+.banner-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.banner-headline {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 34px;
+  letter-spacing: -0.02em;
+  color: var(--state-confirmed);
+}
+
+/* ---- tables ---- */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.table th {
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  font-weight: 500;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--line-strong);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background: var(--surface-inset);
+}
+
+/* ---- panels, empty states ---- */
+
+.panel {
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+}
+
+.empty {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-raised);
+  padding: var(--space-12) var(--space-6);
+  text-align: center;
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin: var(--space-8) auto;
+}
+
+.empty h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 26px;
+  margin: 0 0 var(--space-2);
+  color: var(--text-primary);
+}
+
+.empty p {
+  margin: 0 0 var(--space-2);
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.empty code {
+  font-family: var(--font-data);
+  font-size: 12px;
+  background: var(--surface-inset);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 1px 5px;
+}
+
+/* ---- summary counts ---- */
+
+.counts {
+  display: flex;
+  gap: var(--space-6);
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+.count {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.count-value {
+  font-family: var(--font-data);
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+
+.count[data-state="watching"] .count-value {
+  color: var(--state-watching);
+}
+
+.count[data-state="confirmed"] .count-value {
+  color: var(--state-confirmed);
+}
+
+/* ---- map ---- */
+
+.map-wrap {
+  /* As tall as the page allows. Latitude is the binding constraint on the fit,
+     so every pixel of height here is worth a zoom level, and a zoom level is
+     the difference between five specks and five cameras. */
+  height: calc(100vh - var(--header-height) - 104px);
+  min-height: 420px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface-inset);
+}
+
+/* Leaflet ships its own stylesheet and it is injected after this one, so these
+   two properties are forced. Everything else about the map is themed normally. */
+.map-wrap .leaflet-container {
+  background: var(--surface-base) !important;
+  font-family: var(--font-ui);
+}
+
+.map-wrap .leaflet-tile-pane {
+  /* The dark basemap is already dark. This only stops the brief flash of white
+     tiles while they load. */
+  background: var(--surface-base);
+}
+
+.map-wrap .leaflet-tile {
+  /* CARTO's dark basemap is built to sit quietly under dense data. At county
+     scale it sits so quietly that ridgelines and roads disappear, and an
+     operator placing a fire needs the terrain under it. This lifts the base
+     just far enough to read while keeping every marker brighter than it. */
+  filter: brightness(1.9) contrast(1.08);
+}
+
+.leaflet-control-attribution {
+  background: rgba(14, 16, 19, 0.85) !important;
+  color: var(--text-muted) !important;
+  font-size: 10px !important;
+}
+
+.leaflet-control-attribution a {
+  color: var(--text-secondary) !important;
+}
+
+.leaflet-bar a {
+  background: var(--surface-raised) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--line-strong) !important;
+}
+
+.map-marker {
+  border-radius: 50%;
+  border: 2px solid var(--surface-base);
+}
+
+.map-popup .leaflet-popup-content-wrapper {
+  background: var(--surface-raised);
+  color: var(--text-primary);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.map-popup .leaflet-popup-tip {
+  background: var(--surface-raised);
+  border: 1px solid var(--line-strong);
+}
+
+.map-popup .leaflet-popup-content {
+  margin: var(--space-3);
+  font-family: var(--font-ui);
+}
+
+/* ---- camera detail ---- */
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: var(--space-4);
+  align-items: start;
+}
+
+.detail-image {
+  position: relative;
+  background: var(--surface-inset);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+}
+
+.detail-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-2) var(--space-4);
+  align-items: baseline;
+}
+
+.filmstrip {
+  display: flex;
+  gap: var(--space-1);
+  overflow-x: auto;
+  padding-bottom: var(--space-2);
+}
+
+.filmstrip button {
+  flex: 0 0 auto;
+  width: 92px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-inset);
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.filmstrip button[aria-pressed="true"] {
+  border-color: var(--text-primary);
+}
+
+.filmstrip img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+}
+
+.filmstrip .fs-score {
+  font-family: var(--font-data);
+  font-size: 10px;
+  padding: 2px 3px;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.filmstrip button[data-above="true"] .fs-score {
+  color: var(--state-confirmed);
+}
+
+/* ---- image cross-fade on refresh ---- */
+
+.fade-swap {
+  animation: fade-swap 200ms linear;
+}
+
+@keyframes fade-swap {
+  from {
+    opacity: 0.35;
+  }
+}
+
+/* ---- responsive ---- */
+
+@media (max-width: 900px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding: var(--space-4);
+  }
+
+  .topbar {
+    padding: 0 var(--space-4);
+    gap: var(--space-3);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .counts {
+    width: 100%;
+    margin-left: 0;
+    gap: var(--space-4);
+  }
+
+  /* This block used to hide .topbar-right entirely, which was right when it held
+     nothing but a region label. It now holds the sound toggle and the position
+     field, and hiding those on a phone takes audible alerting away from exactly
+     the person carrying the on-call handset. Only the label goes, and it goes
+     further down at 520px. */
+
+  .nav {
+    margin-left: 0;
+    overflow-x: auto;
+  }
+
+  .banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .banner-headline {
+    font-size: 21px;
+    line-height: 26px;
+  }
+
+  .table-scroll {
+    overflow-x: auto;
+  }
+}
+
+/* Every animation in the product is a specific moment, and every one of them
+   can be turned off. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---- triage ----
+ *
+ * Everything below exists to close the loop that the first build left open: a
+ * confirmation could be raised and never answered. These controls are
+ * deliberately plain. A verdict is a serious record and it should not look like
+ * a reaction button.
+ */
+
+kbd {
+  font-family: var(--font-data);
+  font-size: 10px;
+  line-height: 1;
+  padding: 3px 4px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  margin-left: 6px;
+}
+
+.position {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.position-input {
+  width: 108px;
+  background: var(--surface-inset);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 4px 6px;
+  color: var(--text-primary);
+  font-family: var(--font-data);
+}
+
+.position-input::placeholder {
+  color: var(--text-muted);
+}
+
+.banner-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.verdicts {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.btn.ghost {
+  background: transparent;
+}
+
+/* No colour on the verdict buttons. Painting "real fire" red would put a fifth
+   saturated element on a screen where saturation means the system is making a
+   claim, and this button is where a person makes one instead. */
+.verdict-btn {
+  display: inline-flex;
+  align-items: center;
+}
+
+.verdict-done {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px var(--space-3);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+}
+
+.verdict-done[data-verdict="real_fire"] {
+  border-color: var(--state-confirmed);
+  color: var(--text-primary);
+}
+
+.tile-verdict {
+  display: block;
+  margin-top: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--line);
+  color: var(--text-muted);
+}
+
+.tile-verdict[data-verdict="real_fire"] {
+  color: var(--text-secondary);
+}
+
+/* The keyboard selection is a ring rather than a fill, so it never competes
+   with the state rail that carries the risk. */
+.tile[data-selected] {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 1px;
+}
+
+.page-foot {
+  margin-top: var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.keys {
+  margin-top: var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-raised);
+  padding: var(--space-4);
+}
+
+.keys dl {
+  margin: 0;
+  display: grid;
+  /* Wide enough that "Mark the selection a real fire" fits on one line beside
+     its key. At 240 it wrapped and then clipped. */
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: var(--space-2) var(--space-6);
+}
+
+.keys dl > div {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.keys dt {
+  margin: 0;
+  min-width: 88px;
+}
+
+.keys dt kbd {
+  margin-left: 0;
+}
+
+.keys dd {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.flash {
+  margin-top: var(--space-3);
+  min-height: 18px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.detail-verdict {
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line);
+}
+
+/* ---- reference comparison ---- */
+
+.compare-stage {
+  position: relative;
+  aspect-ratio: 1024 / 683;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-inset);
+  cursor: ew-resize;
+  touch-action: none;
+  user-select: none;
+}
+
+.compare-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* No filter and no difference blend. A false colour difference map would be
+     the interface deciding what changed, which is the operator's job and the
+     one thing this comparison exists to hand back to them. */
+}
+
+/* A hairline, not a chunky pill with a chevron. It is a measurement edge. */
+.compare-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--text-primary);
+  pointer-events: none;
+}
+
+.compare-handle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -5px;
+  width: 11px;
+  height: 30px;
+  margin-top: -15px;
+  border: 1px solid var(--text-primary);
+  background: var(--surface-base);
+  border-radius: var(--radius-sm);
+}
+
+.compare-tag {
+  position: absolute;
+  bottom: 8px;
+  padding: 3px 7px;
+  background: var(--surface-base);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-data);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+.compare-tag-left {
+  left: 8px;
+}
+
+.compare-tag-right {
+  right: 8px;
+}
+
+.compare-control {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.compare-control input[type="range"] {
+  flex: 1;
+  accent-color: var(--text-primary);
+}
+
+.compare-note {
+  margin: var(--space-2) 0 0;
+  line-height: 1.5;
+}
+
+.detail-tools {
+  margin-top: var(--space-3);
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* ---- audible alerting ---- */
+
+.alertsound {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.alertsound-btn {
+  padding: 4px var(--space-3);
+  font-size: 12px;
+}
+
+/* Not painted in a state colour. A mute is an operations fact, not a claim
+   about a fire, and the same rule that keeps offline out of red keeps this
+   out of it too. Its job is to be permanently visible, not alarming. */
+.alertsound-muted {
+  background: var(--surface-inset);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  padding: 4px var(--space-2);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-family: var(--font-data);
+}
+
+.alertsound-muted:hover {
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+
+.banner-mute {
+  display: inline-flex;
+  gap: var(--space-2);
+}
+
+/* ---- handoff ---- */
+
+.handoff-windows {
+  display: flex;
+  gap: var(--space-3);
+  font-family: var(--font-data);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.handoff-windows a[aria-current="page"] {
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--text-primary);
+}
+
+.handoff-summary {
+  margin: 0 0 var(--space-6);
+  max-width: 80ch;
+}
+
+.handoff-block {
+  margin-bottom: var(--space-8);
+}
+
+.handoff-label {
+  margin-bottom: var(--space-3);
+}
+
+/* Unanswered gets the confirmed colour on its label because it is still the
+   system making a claim nobody has answered. Answered rows are neutral: the
+   claim has been dealt with, whichever way it went. */
+.handoff-label[data-open] {
+  color: var(--state-confirmed);
+}
+
+.handoff-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.handoff-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.handoff-row[data-open] {
+  border-left: 2px solid var(--state-confirmed);
+  padding-left: var(--space-3);
+}
+
+.handoff-thumb {
+  flex: none;
+  width: 96px;
+  height: 64px;
+  background: var(--surface-inset);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.handoff-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.handoff-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.handoff-name {
+  display: block;
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.handoff-name:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.handoff-note {
+  margin-top: 4px;
+}
+
+.handoff-answer {
+  flex: none;
+}
+
+@media (max-width: 720px) {
+  .handoff-row {
+    flex-wrap: wrap;
+  }
+
+  .handoff-answer {
+    width: 100%;
+  }
+}
+
+/* ---- range inputs ----
+ *
+ * Styled at the base rather than per control. A colour audit against the
+ * fourteen declared tokens caught two of these still carrying the user agent's
+ * white background and near black text, once on each surface, which is the sort
+ * of thing that survives a visual review and fails an automated one. Any range
+ * added later inherits this instead of repeating the mistake.
+ */
+
+input[type="range"] {
+  height: 22px;
+  margin: 0;
+  background: transparent;
+  color: var(--text-primary);
+  border: 0;
+  outline-color: var(--text-primary);
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 2px;
+  background: var(--line-strong);
+}
+
+input[type="range"]::-moz-range-track {
+  height: 2px;
+  background: var(--line-strong);
+}
+
+/* Square, like every other measurement mark in this system. */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 22px;
+  margin-top: -10px;
+  background: var(--text-primary);
+  border: 0;
+  border-radius: 1px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 10px;
+  height: 22px;
+  background: var(--text-primary);
+  border: 0;
+  border-radius: 1px;
+}
+
+.handoff-thumb-gone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 4px;
+  text-align: center;
+  font-family: var(--font-data);
+  font-size: 10px;
+  line-height: 13px;
+  color: var(--text-muted);
+}
+
+/* ---- map rail ---- */
+
+.map-layout {
+  display: grid;
+  grid-template-columns: minmax(200px, 250px) minmax(0, 1fr);
+  gap: var(--space-2);
+}
+
+.map-rail {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  overflow-y: auto;
+  height: calc(100vh - var(--header-height) - 104px);
+}
+
+.map-rail-item {
+  width: 100%;
+  text-align: left;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2px var(--space-2);
+  padding: 10px var(--space-3);
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-left: 2px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.map-rail-item:hover {
+  border-color: var(--line-strong);
+}
+
+.map-rail-item[data-on] {
+  border-color: var(--line-strong);
+  background: var(--surface-inset);
+}
+
+/* Same rail language as the camera tiles: clear draws nothing, watching and
+   confirmed draw the state on the left edge. */
+.map-rail-item[data-state="watching"] {
+  border-left-color: var(--state-watching);
+}
+
+.map-rail-item[data-state="confirmed"] {
+  border-left-color: var(--state-confirmed);
+}
+
+.map-rail-item[data-state="offline"] {
+  border-left-color: var(--state-offline);
+}
+
+.map-rail-name {
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--text-primary);
+}
+
+.map-rail-state {
+  grid-row: 1 / 3;
+  grid-column: 2;
+  align-self: center;
+  color: var(--text-muted);
+}
+
+.map-rail-item[data-state="confirmed"] .map-rail-state {
+  color: var(--state-confirmed);
+}
+
+.map-rail-item[data-state="watching"] .map-rail-state {
+  color: var(--state-watching);
+}
+
+.map-rail-meta {
+  color: var(--text-muted);
+}
+
+@media (max-width: 760px) {
+  .map-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .map-rail {
+    height: auto;
+    max-height: 168px;
+  }
+
+  /* The desktop height subtracts a one row header. On a phone the bar is two
+     rows and taller, so a viewport calculation built on --header-height pushes
+     the bottom of the map off the screen. A fixed fraction is honest here. */
+  .map-wrap {
+    height: 62vh;
+  }
+}
+
+/* ---- narrow console ----
+ *
+ * The top bar was a single row that simply ran off the side of a phone, which
+ * took the handoff link, the sound control and the position field with it. On a
+ * watch floor that is a desktop surface, but the person carrying the on-call
+ * phone is exactly the person who needs to hear an alert and answer it, so none
+ * of those three can be desktop only.
+ */
+
+@media (max-width: 760px) {
+  .topbar {
+    height: auto;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    row-gap: var(--space-2);
+  }
+
+  .topbar-right {
+    /* Sits on the first row beside the wordmark, because the sound toggle is
+       the control most likely to be wanted in a hurry. */
+    display: flex;
+    order: 2;
+    gap: var(--space-2);
+  }
+
+  .nav {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    /* The bar scrolls rather than wrapping to a second line of links, so the
+       page below it does not shift down by a row when a link is added. */
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav a {
+    white-space: nowrap;
+  }
+
+  .position-input {
+    width: 84px;
+  }
+
+  .page-head {
+    flex-wrap: wrap;
+  }
+
+  .banner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .banner-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 520px) {
+  /* The county label is context, not a control. It is the first thing to go. */
+  .topbar-right > .data-sm.muted {
+    display: none;
+  }
+}

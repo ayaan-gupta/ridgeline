@@ -1,0 +1,323 @@
+{
+ "sequence": "smer-tcs8-20190829",
+ "camera": {
+  "id": "smer-tcs8",
+  "name": "Santa Margarita TCS8",
+  "site": "SDSU Santa Margarita Ecological Reserve",
+  "network": "hpwren",
+  "attribution": "HPWREN, UC San Diego",
+  "lat": 33.460765,
+  "lng": -117.146776,
+  "elevation_m": 629,
+  "bearing_deg": 270
+ },
+ "roi": [
+  0.0,
+  0.06,
+  1.0,
+  0.72
+ ],
+ "plume": [
+  0.42,
+  0.24,
+  0.8,
+  0.58
+ ],
+ "threshold": 0.6,
+ "consecutive": 3,
+ "window": 5,
+ "background_frames": 3,
+ "seconds_per_frame": 60,
+ "confirmed_index": null,
+ "confirmed_at_seconds": null,
+ "frames": [
+  {
+   "i": 0,
+   "file": "-00841.jpg",
+   "t": -841,
+   "score": null,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 1,
+   "file": "-00782.jpg",
+   "t": -782,
+   "score": null,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 2,
+   "file": "-00722.jpg",
+   "t": -722,
+   "score": null,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 3,
+   "file": "-00662.jpg",
+   "t": -662,
+   "score": null,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 4,
+   "file": "-00602.jpg",
+   "t": -602,
+   "score": 0.0334,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 5,
+   "file": "-00542.jpg",
+   "t": -542,
+   "score": 0.0343,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 6,
+   "file": "-00480.jpg",
+   "t": -480,
+   "score": 0.04,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 7,
+   "file": "-00422.jpg",
+   "t": -422,
+   "score": 0.0364,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 8,
+   "file": "-00359.jpg",
+   "t": -359,
+   "score": 0.0372,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 9,
+   "file": "-00302.jpg",
+   "t": -302,
+   "score": 0.0393,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 10,
+   "file": "-00242.jpg",
+   "t": -242,
+   "score": 0.0397,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 11,
+   "file": "-00182.jpg",
+   "t": -182,
+   "score": 0.0405,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 12,
+   "file": "-00121.jpg",
+   "t": -121,
+   "score": 0.0414,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 13,
+   "file": "-00062.jpg",
+   "t": -62,
+   "score": 0.0423,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 14,
+   "file": "+00000.jpg",
+   "t": 0,
+   "score": 0.0461,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 15,
+   "file": "+00058.jpg",
+   "t": 58,
+   "score": 0.045,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 16,
+   "file": "+00178.jpg",
+   "t": 178,
+   "score": 0.0403,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 17,
+   "file": "+00240.jpg",
+   "t": 240,
+   "score": 0.0449,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 18,
+   "file": "+00298.jpg",
+   "t": 298,
+   "score": 0.0451,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 19,
+   "file": "+00418.jpg",
+   "t": 418,
+   "score": 0.0467,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 20,
+   "file": "+00478.jpg",
+   "t": 478,
+   "score": 0.0482,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 21,
+   "file": "+00538.jpg",
+   "t": 538,
+   "score": 0.0478,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 22,
+   "file": "+00598.jpg",
+   "t": 598,
+   "score": 0.047,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 23,
+   "file": "+00658.jpg",
+   "t": 658,
+   "score": 0.0508,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 24,
+   "file": "+00778.jpg",
+   "t": 778,
+   "score": 0.0575,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 25,
+   "file": "+00838.jpg",
+   "t": 838,
+   "score": 0.0619,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 26,
+   "file": "+00898.jpg",
+   "t": 898,
+   "score": 0.0594,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 27,
+   "file": "+00958.jpg",
+   "t": 958,
+   "score": 0.0637,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 28,
+   "file": "+01018.jpg",
+   "t": 1018,
+   "score": 0.0577,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 29,
+   "file": "+01082.jpg",
+   "t": 1082,
+   "score": 0.069,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 30,
+   "file": "+01138.jpg",
+   "t": 1138,
+   "score": 0.0725,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  },
+  {
+   "i": 31,
+   "file": "+01198.jpg",
+   "t": 1198,
+   "score": 0.0766,
+   "run": 0,
+   "state": "clear",
+   "bbox": null
+  }
+ ]
+}
